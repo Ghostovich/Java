@@ -6,41 +6,43 @@ import java.io.*;
 
 public class s3 {
     public static void main(String[] args) {
-        String line = "empty";
+        String line = "Test";
+        String resultLine = repeatString(line);
+        fillFile("file.txt", resultLine);
+
+    }
+
+    public static void fillFile(String fileName, String line) {
         FileWriter fileWriter = null;
         try {
-            String pathProject = System.getProperty("user.dir");
-            String pathFile = pathProject.concat("/file.txt");
-            File file = new File(pathFile);
+            File file = new File(fileName);
 
             if (file.createNewFile()) {
                 System.out.println("file.created");
             } else {
                 System.out.println("file.existed");
-                fileWriter = new FileWriter(file, true);
-                fileWriter.write("new line");
-
-                // #region lineSeparator
-                // A string containing "\r\n" for non-Unix
-                // platforms, or a string containing
-                // "\n" for Unix platforms.
-                fileWriter.append(System.lineSeparator());
-                // #endregion
-
-                fileWriter.write("new line");
-                fileWriter.append("new line");
-                // fileWriter.flush();
-                
-                // BufferedReader bufReader = new BufferedReader(new FileReader(file));
-                // line = bufReader.readLine();
-                // bufReader.close();
+                fileWriter = new FileWriter(file, false);
+                fileWriter.append(line);
+                fileWriter.close();
             }
         } catch (Exception e) {
-            // e.printStackTrace();
         } finally {
-            if (fileWriter==null){
-            fileWriter.close();
+            try {
+                if (fileWriter != null) {
+                    fileWriter.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Error");
             }
+
         }
+    }
+
+    public static String repeatString(String text) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < 100; i++) {
+            result.append(text);
+        }
+        return result.toString();
     }
 }
