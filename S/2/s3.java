@@ -46,3 +46,15 @@ public class s3 {
         return result.toString();
     }
 }
+
+
+//нормальный вариант
+//class
+// void {
+//     try(FileWriter fileWriter = new FileWriter("file.txt")) {
+//         fileWriter.append("Test ". repeat(100));
+//     }
+//     catch (IOException ex) {
+//         System.out.println("Error");
+//     }
+// }
