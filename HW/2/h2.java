@@ -1,6 +1,6 @@
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 // Реализуйте алгоритм сортировки пузырьком числового массива, 
 // результат после каждой итерации запишите в лог-файл.
@@ -8,10 +8,14 @@ import java.util.logging.Logger;
 public class h2 {
     private static Logger logger = Logger.getLogger(h2.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SecurityException, IOException {
+        Handler fileHandler = new FileHandler();
+        logger.addHandler(fileHandler);
+        // записывает файл по умолчанию, конфигурацию так и не сообразил как прикрутить(
+
         Integer[] array = { 6, 9, 3, 5, 8 };
-        Integer[] newArray = sorting(array);
         System.out.println(Arrays.toString(array));
+        Integer[] newArray = sorting(array);
         System.out.println(Arrays.toString(newArray));
     }
 
@@ -27,15 +31,11 @@ public class h2 {
                     temp = array[i];
                     array[i] = array[i + 1];
                     array[i + 1] = temp;
-                    // logger.log(Level.INFO, Integer.toString(temp));
                 }
+                logger.log(Level.INFO, Integer.toString(array[i]));
             }
         }
 
-        // for (int i = 0; i < 10; i++) {
-        // logger.log(Level.INFO, Integer.toString(i));
-        // }
-        System.out.println(Arrays.toString(array));
         return array;
     }
 }
