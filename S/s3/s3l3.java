@@ -11,11 +11,15 @@ public class s3l3 {
         strAndNum.add("Москва");
         strAndNum.add(125);
         strAndNum.add("Казань");
-        strAndNum.add(145));
+        strAndNum.add(145);
         strAndNum.add("Омск");
 
-        for (int i = 0; i < args.length; i++) {
-            
+        for (int i = 0; i < strAndNum.size(); i++) {
+            if (strAndNum.get(i) instanceof Integer){
+                strAndNum.remove(i);
+                i--;
+            }
         }
+        System.out.println(strAndNum);
     }
 }
