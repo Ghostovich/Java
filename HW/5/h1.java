@@ -8,14 +8,12 @@ import java.util.*;
  */
 public class h1 {
     public static void main(String[] args) {
-        List<String> contactNumbers = new ArrayList<>();
         Map<String, String> directory = new HashMap<String, String>();
-        contactNumbers.add("8377383");
-        // contactNumbers.add("8938");
-        directory.put("Иванов", "43443");
-        // directory.put("Иванов", new ArrayList<>().add(new String("9494")));
-        // directory.put("Жеглов", contactNumbers);
-        // directory.put("Шарапов", contactNumbers);
+        String contactNumsIvanov = new String("89201408789" + ", " + "8910284891");
+        String contactNumsPonomarenko = new String("89208748789" + ", " + "891054891" + ", " + "8912342391");
+        directory.put("Иванов", contactNumsIvanov);
+        directory.put("Жеглов", "823930930");
+        directory.put("Пономаренко", contactNumsPonomarenko);
         System.out.println(directory);
     }
 }
